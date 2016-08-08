@@ -17,7 +17,7 @@
     "username": "sy9gwbp5tgxdbdji",
     "password": "waskm365svnkpe57",
     "database": "az1l11w4jrod1vdw",
-    "host": "mysql://sy9gwbp5tgxdbdji:waskm365svnkpe57@gx97kbnhgjzh3efb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/az1l11w4jrod1vdw",
+    "host": "gx97kbnhgjzh3efb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql",
     "use_env_variable": "DATABASE_URL"
   }
