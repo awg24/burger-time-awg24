@@ -6,6 +6,10 @@
 			{{#unless devoured}}
 			<li>
 				{{burger_name}}
+				<form action="/updateBurgerStatus/{{id}}?_method=PUT" method="POST">
+					<input type="text" hidden name="devoured" value="1" />
+					<button type="submit">EAT ME!</button>
+				</form>
 			</li>
 			{{/unless}}
 		{{/each}}

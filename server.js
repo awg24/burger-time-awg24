@@ -10,20 +10,36 @@ var models = require("./models");
 models.sequelize.sync();
 
 //config
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
+app.use(bodyParser.urlencoded({ extended: false }));
+
 
 app.engine("handlebars", exphbs({
 	defaultLayout: "main"
 }));
 app.set("view engine", "handlebars");
 
-
 //routes
 app.get("/", function(req, res){
 	models.Burgers.findAll().then(function(data){
 		res.render("welcome", {burgers: data});
 	});
+});
+
+app.put("/updateBurgerStatus/:id", function(req, res){
+	console.log("newValue",req.body.devoured)
+	models.Burgers.update(
+		{
+			devoured: Boolean(req.body.devoured)
+		},
+		{
+			where: {
+				id: req.params.id
+			}
+		}
+	).then(function(){
+		res.redirect("/")
+	})
 });
 
 app.post("/addBurger", function(req, res){
@@ -35,7 +51,6 @@ app.post("/addBurger", function(req, res){
 		res.redirect("/");
 	});
 });
-
 
 //listen on port
 app.listen(PORT, function(){
