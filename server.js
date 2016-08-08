@@ -2,7 +2,7 @@ var express = require("express");
 var exphbs = require("express-handlebars");
 var mysql = require("mysql");
 var methodOverride = require("method-override");
-
+var bodyParser = require("body-parser");
 var app = express();
 var PORT = 3000;
 
@@ -10,7 +10,9 @@ var models = require("./models");
 models.sequelize.sync();
 
 //config
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
+
 app.engine("handlebars", exphbs({
 	defaultLayout: "main"
 }));
@@ -25,7 +27,13 @@ app.get("/", function(req, res){
 });
 
 app.post("/addBurger", function(req, res){
-	console.log(req.body)
+	models.Burgers.create({
+		burger_name: req.body.burger_name,
+		devoured: req.body.devoured,
+		date: new Date()
+	}).then(function(){
+		res.redirect("/");
+	});
 });
 
 

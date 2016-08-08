@@ -3,18 +3,6 @@
 <div>
 	<ul>
 		{{#each burgers}}
-			{{#if devoured}}
-			<li>
-				{{burger_name}}
-			</li>
-			{{/if}}
-		{{/each}}
-	</ul>
-</div>
-<h1>Eaten</h1>
-<div>
-	<ul>
-		{{#each burgers}}
 			{{#unless devoured}}
 			<li>
 				{{burger_name}}
@@ -23,10 +11,23 @@
 		{{/each}}
 	</ul>
 </div>
+<h1>Eaten</h1>
+<div>
+	<ul>
+		{{#each burgers}}
+			{{#if devoured}}
+			<li>
+				{{burger_name}}
+			</li>
+			{{/if}}
+		{{/each}}
+	</ul>
+</div>
 <div>
 	<h1>Add a burger!</h1>
-	<form action="/addBurger" method="post">
+	<form action="/addBurger" method="POST">
 		<input type="text" name="burger_name" required />
 		<input type="text" hidden name="devoured" value="false" />
+		<button type="submit">ADD</button>
 	</form
 </div>
