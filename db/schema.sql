@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS burgerdb;
+
+CREATE TABLE IF NOT EXISTS burgers 
+(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	burger_name VARCHAR(30),
+	devoured BOOLEAN,
+	date TIMESTAMP
+);
+

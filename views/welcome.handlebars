@@ -1,0 +1,32 @@
+<p>Welcome to the burgertime app!</p>
+<h1>To Eat</h1>
+<div>
+	<ul>
+		{{#each burgers}}
+			{{#if devoured}}
+			<li>
+				{{burger_name}}
+			</li>
+			{{/if}}
+		{{/each}}
+	</ul>
+</div>
+<h1>Eaten</h1>
+<div>
+	<ul>
+		{{#each burgers}}
+			{{#unless devoured}}
+			<li>
+				{{burger_name}}
+			</li>
+			{{/unless}}
+		{{/each}}
+	</ul>
+</div>
+<div>
+	<h1>Add a burger!</h1>
+	<form action="/addBurger" method="post">
+		<input type="text" name="burger_name" required />
+		<input type="text" hidden name="devoured" value="false" />
+	</form
+</div>
